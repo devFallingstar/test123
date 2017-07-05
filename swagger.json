@@ -38,7 +38,7 @@
         ],
         "summary": "Add a new students to the store",
         "description": "",
-        "operationId": "studentInfo",
+        "operationId": "addDataToDB",
         "parameters": [
           {
             "in": "query",
@@ -71,7 +71,7 @@
         ],
         "summary": "Place an change information for a student",
         "description": "",
-        "operationId": "changeInfo",
+        "operationId": "setData",
         "parameters": [
           {
             "in": "query",
@@ -109,12 +109,12 @@
         ],
         "summary": "Finds Student information",
         "description": "Finds Student information",
-        "operationId": "findStudentsByID",
+        "operationId": "getDataWithID",
         "parameters": [
           {
             "name": "id",
             "in": "query",
-            "description": "query for id",
+            "description": "query for information with id",
             "required": true,
             "type": "string",
             "items": {
@@ -146,7 +146,7 @@
         ],
         "summary": "Finds Student information",
         "description": "Finds Student information",
-        "operationId": "findsByStatus",
+        "operationId": "getDataWithName",
         "parameters": [
           {
             "name": "name",
