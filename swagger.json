@@ -1,0 +1,259 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server py35qt4 server.  You can find out more about     Student information using postgreSQL database For this sample, you can use the student name key `박예지` to test the authorization     filters.",
+    "version": "1.0.0",
+    "title": "Students information",
+    "contact": {
+      "email": "yaejee89@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/v2",
+  "tags": [
+    {
+      "name": "Student",
+      "description": "Everything about students information"
+    },
+    {
+      "name": "store(postgreSQL)",
+      "description": "Access to database using postgreSQL"
+    },
+    {
+      "name": "user",
+      "description": "Operations about user"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/student": {
+      "post": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Add a new students to the store",
+        "description": "",
+        "operationId": "studentInfo",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string",
+            "description": "Student name."
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string",
+            "description": "Student id."
+          },
+          {
+            "in": "query",
+            "name": "birth",
+            "type": "string",
+            "description": "Student birth."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Place an change information for a student",
+        "description": "",
+        "operationId": "changeInfo",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string",
+            "description": "Student name."
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string",
+            "description": "Student id."
+          },
+          {
+            "in": "query",
+            "name": "birth",
+            "type": "string",
+            "description": "Student birth."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid Order"
+          }
+        }
+      }
+    },
+    "/student/getByID": {
+      "get": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Finds Student information",
+        "description": "Finds Student information",
+        "operationId": "findStudentsByID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "query for id",
+            "required": true,
+            "type": "string",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Name",
+                "ID",
+                "Birth"
+              ],
+              "default": "available"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/student/getByName": {
+      "get": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Finds Student information",
+        "description": "Finds Student information",
+        "operationId": "findsByStatus",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "query for information",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Name",
+                "ID",
+                "Birth"
+              ],
+              "default": "available"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/student/deleteWithName": {
+      "delete": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Delete purchase order by ID",
+        "description": "Student information delete",
+        "operationId": "deleteStudentsInfo",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Order not found"
+          }
+        }
+      }
+    },
+    "/student/deleteWithID": {
+      "delete": {
+        "tags": [
+          "Student"
+        ],
+        "summary": "Delete student information by ID",
+        "description": "Delete student information",
+        "operationId": "deleteStudentInfo",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Order not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Student": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "YJ",
+          "description": "Students name information"
+        },
+        "id": {
+          "type": "string",
+          "example": "201533644",
+          "description": "Students name information"
+        },
+        "birth": {
+          "type": "string",
+          "example": "961001",
+          "description": "Students name information"
+        }
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
