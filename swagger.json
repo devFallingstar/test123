@@ -112,21 +112,11 @@
         "operationId": "getDataWithID",
         "parameters": [
           {
-            "name": "id",
+            "name": "ID",
             "in": "query",
-            "description": "query for information with id",
+            "description": "query for information",
             "required": true,
-            "type": "string",
-            "items": {
-              "type": "string",
-              "enum": [
-                "name",
-                "id",
-                "birth"
-              ],
-              "default": "available"
-            },
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
@@ -153,17 +143,7 @@
             "in": "query",
             "description": "query for information",
             "required": true,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "Name",
-                "ID",
-                "Birth"
-              ],
-              "default": "available"
-            },
-            "collectionFormat": "multi"
+            "type": "string"
           }
         ],
         "responses": {
